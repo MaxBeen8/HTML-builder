@@ -6,7 +6,7 @@ const fsProm = fsPromises.readdir(path.join(__dirname, 'secret-folder'), {
   withFileTypes: true
 })
 
-fsProm.then(function(item) {
+fsProm.then((item) => {
   item.forEach(element => {
     if (!element.isDirectory()) {
       const ext = path.extname(path.join(__dirname, 'secret-folder', element.name))
