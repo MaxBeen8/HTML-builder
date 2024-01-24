@@ -63,7 +63,8 @@ fs.copyFile(path.join(__dirname, 'template.html'), path.join(__dirname, 'project
         await fsPromises.readFile(path.join(__dirname, 'components', file.name), 'utf-8')
         .then(async code => {
           if (ext === '.html') {
-            await fsPromises.writeFile(path.join(__dirname, "project-dist", "index.html"), data = data.replace(`{{${name}}}`,`\n${code}`));
+            data = data.replaceAll(`{{${name}}}`,`\n${code}`);
+            await fsPromises.writeFile(path.join(__dirname, "project-dist", "index.html"), data);
           } else {
             throw new Error('Error type file');
           }
@@ -84,8 +85,3 @@ fsProm.then(item => {
     }
   })
 })
-
-
-
-
-
